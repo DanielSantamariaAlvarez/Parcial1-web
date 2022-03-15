@@ -1,0 +1,18 @@
+[
+    {
+    "last_name": "Daws",
+    "first_name": "Nari",
+    "email": "ndaws0@dell.com",
+    "photo": "http://dummyimage.com/155x119.jpg/ff4444/ffffff"
+   }, {
+    "last_name": "Withams",
+    "first_name": "Winona",
+    "email": "wwithams1@ibm.com",
+    "photo": "http://dummyimage.com/161x166.bmp/cc0000/ffffff"
+   }, {
+    "last_name": "Streatfield",
+    "first_name": "Northrup",
+    "email": "nstreatfield2@macromedia.com",
+    "photo": "http://dummyimage.com/195x201.png/ff4444/ffffff"
+   }
+]
