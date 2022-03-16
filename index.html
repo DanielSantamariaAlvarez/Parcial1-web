@@ -7,20 +7,42 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Rochester&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
 
-    <title>Parcial</title>
+
+    <title>Restaurant & Lounge</title>
   </head>
   <body>
+    <div class="top pt-md-4">
+      <div class="row justify-content-between flex-column-reverse  flex-md-row">
+        <div class="col-md-6"><div class="logo text-center">Restaurant & Lounge</div></div>
+        <div class="col-md-2">
+          <div onclick="loadTable()" class="carrito justify-content-end mx-3">
+            <div class="car"><img src="assets/img/image 1.png" alt=""></div>
+            <div class="contador" id="cuenta"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="banner w-100 d-md-block d-none">
+      <img src="assets/img/banner.png" class="w-100" alt="">
+    </div>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg  py-2 mini">
         <div class="container-fluid">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+          <div class="producto d-md-none d-block p-3" id="tituloProducto"></div>
+          <div class="boton" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+            </svg>
+          </div>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" onclick="loadBurgers()" id="burger">Burguers</a>
+                <a class="nav-link" onclick="loadBurgers()" id="burger">Burguers</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link"  onclick="loadTacos()"  id="taco" >Tacos</a>
@@ -34,25 +56,69 @@
               <li class="nav-item">
                 <a class="nav-link"  onclick="loadDrinks()" id="drink">Drinks & Sides</a>
               </li>
-
-              <li class="nav-item">
-                <a class="nav-link"  id="compro">Carro</a>
-              </li>
             </ul>
           </div>
         </div>
       </nav>
 
     <div class="container">
-        <div class="row justify-content-center p-5">
+        <div class="row justify-content-center py-5">
             <div class="col-md-12 text-center">
-                <div id="nombreProducto"></div>
+                <div class="text-uppercase text" id="nombreProducto"></div>
             </div>
         </div>
-        <div id="productos" class="row">
+        <div id="productos" class="row productos">
 
         </div>
+
+        <div class="row justify-content-center  tabla d-flex" id="carrito">
+          <div class="col-md-10">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col"  class="ocultar" >Item</th>
+                  <th scope="col" class="ocultar" >Qty.</th>
+                  <th scope="col" class="ocultar" >Description</th>
+                  <th scope="col" class="ocultar" >Unit Price</th>
+                  <th scope="col" class="ocultar" >Amount</th>
+                  <th scope="col" class="ocultar" >Modify</th>
+                </tr>
+              </thead>
+              <tbody id="itemsCart">
+                  
+                
+              </tbody>
+            </table>
+            <div class="alerta p-5 d-none" id="alert">
+              <h2 class=""> Cancel the order</h2>
+              <h3 class="py-3">Are you sure about cancelling the order?</h3>
+              <div class="botones row justify-content-end">
+                <div class="col-md-10 justify-content-end"><div onclick ="cancelar()" class="yes">Yes, I want to cancel the order</div></div>
+                <div class="col-md-10 justify-content-end"><div onclick ="descancelar()" class="no">No, I want to continue adding products</div></div>
+              </div>
+            </div>
+            <div class="row py-3 justify-content-between">
+              <div class="col-md-2 total" id="total">
+                
+              </div>
+              <div class="col-md-3 d-flex centrar">
+                <div onclick="preCancel()" class="cancel text-light justify-content-center ">
+                  Cancel
+                </div>
+                <div onclick="confirmar()" class="confirm text-light justify-content-center">
+                  Confirm order
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
     </div>
+
+    <footer class="p-4">
+      <div class="content-footer text-center">
+        Contact us: +57 3102171020 - info@restaurant.com  - @restaurant
+      </div>
+    </footer>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
